@@ -42,12 +42,15 @@ class RegisterFragment: Fragment(R.layout.register_fragment) {
 
             if(email.isEmpty() || password.isEmpty() || repeatpassword.isEmpty()){
                 Toast.makeText(activity,"Fill all Fields!", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
             }
             if(password.length < 8){
                 Toast.makeText(activity, "Password must be minimum 8 Characters long", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
             }
             if(password != repeatpassword){
                 Toast.makeText(activity, "Passwords do not match!", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
             }
             mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener { task ->
@@ -56,6 +59,7 @@ class RegisterFragment: Fragment(R.layout.register_fragment) {
                         navController.navigate(regtolog)
                     }else{
                         Toast.makeText(activity, "Error occured!", Toast.LENGTH_SHORT).show()
+                        return@addOnCompleteListener
                     }
                 }
 

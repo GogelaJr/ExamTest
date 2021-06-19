@@ -62,6 +62,7 @@ class LoginFragment: Fragment(R.layout.login_fragment) {
                         navController.navigate(logtohome)
                     }else{
                         Toast.makeText(activity, "Email or Password is invalid", Toast.LENGTH_SHORT).show()
+
                     }
                 }
         }
