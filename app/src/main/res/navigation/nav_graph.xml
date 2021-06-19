@@ -34,7 +34,7 @@
         android:id="@+id/recoveryFragment"
         android:name="com.example.examtest.fragments.RecoveryFragment"
         android:label="RecoveryFragment"
-        tools:layout="@layout/recovery_fragment">>
+        tools:layout="@layout/recovery_fragment">
         <action
             android:id="@+id/action_recoveryFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
