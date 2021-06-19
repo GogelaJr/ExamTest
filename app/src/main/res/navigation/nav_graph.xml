@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_loginFragment_to_recoveryFragment"
             app:destination="@id/recoveryFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_homepageFragment"
+            app:destination="@id/homepageFragment" />
     </fragment>
     <fragment
         android:id="@+id/registerFragment"
@@ -34,6 +37,15 @@
         tools:layout="@layout/recovery_fragment">>
         <action
             android:id="@+id/action_recoveryFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/homepageFragment"
+        android:name="com.example.examtest.fragments.HomepageFragment"
+        android:label="HomepageFragment"
+        tools:layout="@layout/homepage_fragment">
+        <action
+            android:id="@+id/action_homepageFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
     </fragment>/>
 </navigation>

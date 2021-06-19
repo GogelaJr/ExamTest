@@ -53,17 +53,27 @@ class LoginFragment: Fragment(R.layout.login_fragment) {
 
             if(email.isEmpty() || password.isEmpty()){
                 Toast.makeText(activity, "Please enter your Email and Password", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
             }
+            mAuth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener { task ->
+                    if(task.isSuccessful){
+                        val logtohome = LoginFragmentDirections.actionLoginFragmentToHomepageFragment()
+                        navController.navigate(logtohome)
+                    }else{
+                        Toast.makeText(activity, "Email or Password is invalid", Toast.LENGTH_SHORT).show()
+                    }
+                }
         }
 
 
         registerButton.setOnClickListener{
-            val action = LoginFragmentDirections.actionLoginFragmentToRegisterFragment()
-            navController.navigate(action)
+            val logtoreg = LoginFragmentDirections.actionLoginFragmentToRegisterFragment()
+            navController.navigate(logtoreg)
         }
         recoveryButton.setOnClickListener(){
-            val action = LoginFragmentDirections.actionLoginFragmentToRecoveryFragment()
-            navController.navigate(action)
+            val logtorec = LoginFragmentDirections.actionLoginFragmentToRecoveryFragment()
+            navController.navigate(logtorec)
         }
     }
 
