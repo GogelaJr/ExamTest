@@ -3,6 +3,7 @@ package com.example.examtest.fragments
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.examtest.Locations
 import com.example.examtest.R
@@ -18,7 +19,11 @@ class HomepageFragment: Fragment(R.layout.homepage_fragment) {
 
         recyclerView = view.findViewById(R.id.recyclerView)
 
+        val activity = getActivity()
+
         recycleViewAdapter = RecycleViewAdapter(getData())
+        recyclerView.layoutManager = LinearLayoutManager(activity)
+        recyclerView.adapter = recycleViewAdapter
 
 
     }
