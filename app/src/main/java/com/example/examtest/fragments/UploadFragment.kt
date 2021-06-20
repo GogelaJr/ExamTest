@@ -13,15 +13,13 @@ import androidx.fragment.app.Fragment
 import com.example.examtest.ChangeActivity
 import com.example.examtest.LoginActivity
 import com.example.examtest.R
+import com.example.examtest.UploadActivity
 import com.google.android.gms.tasks.Continuation
-import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
-import com.google.firebase.storage.UploadTask
-import java.util.*
 
 class UploadFragment:Fragment(R.layout.upload_fragment) {
     private lateinit var imageView:ImageView
@@ -55,68 +53,18 @@ class UploadFragment:Fragment(R.layout.upload_fragment) {
 
         this.listeners()
     }
-
     private fun listeners(){
-        choose.setOnClickListener(){
-            openFileChooser()
-
-        }
         upload.setOnClickListener(){
             val activity = getActivity()
-            val name = picturename.text.toString()
-            val descript = description.text.toString()
-            if(name.isEmpty() || descript.isEmpty()){
-                Toast.makeText(activity, "Please fill all fields", Toast.LENGTH_SHORT).show()
-                return@setOnClickListener
+            startActivity(Intent(activity,UploadActivity::class.java))
             }
-
-
-        }
         change.setOnClickListener(){
             var activity = getActivity()
             startActivity(Intent(activity, ChangeActivity::class.java))
-
         }
         logout.setOnClickListener(){
             startActivity(Intent(activity, LoginActivity::class.java))
             mAuth.signOut()
         }
     }
-    private fun openFileChooser(){
-        val intent = Intent()
-        intent.type = "image/*"
-        intent.action = Intent.ACTION_GET_CONTENT
-        startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE_REQUEST)
-
-    }
-
-    private fun uploadImage(){
-        val activity = getActivity()
-        if(filePath != null){
-            val ref = storageReference?.child("uploads/" + UUID.randomUUID().toString())
-            val uploadTask = ref?.putFile(filePath!!)
-
-            val urlTask = uploadTask?.continueWithTask(Continuation<UploadTask.TaskSnapshot, Task<Uri>> { task ->
-                if (!task.isSuccessful) {
-                    task.exception?.let {
-                        throw it
-                    }
-                }
-                return@Continuation ref.downloadUrl
-            })?.addOnCompleteListener { task ->
-                if (task.isSuccessful) {
-                    val downloadUri = task.result
-                    addUploadRecordToDb(downloadUri.toString())
-                } else {
-                    // Handle failures
-                }
-            }?.addOnFailureListener{
-
-            }
-        }else{
-            Toast.makeText(activity, "Please Upload an Image", Toast.LENGTH_SHORT).show()
-        }
-
-    }
-
 }
