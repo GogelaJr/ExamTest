@@ -10,9 +10,9 @@
     android:icon="@drawable/favoriteicon"
     android:title="Favorites"/>
 <item
-    android:id="@+id/logOutFragment"
-    android:icon="@drawable/logouticon"
-    android:title="Logout"/>
+    android:id="@+id/uploadFragment"
+    android:icon="@drawable/upload"
+    android:title="Upload"/>
 
 
 

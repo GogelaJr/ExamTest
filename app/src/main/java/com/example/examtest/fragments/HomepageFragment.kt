@@ -1,12 +1,13 @@
 package com.example.examtest.fragments
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.AppBarConfiguration
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -22,34 +23,20 @@ class HomepageFragment: Fragment(R.layout.homepage_fragment) {
     private lateinit var recycleViewAdapter: RecycleViewAdapter
     private lateinit var recyclerView: RecyclerView
     private lateinit var db: DatabaseReference
-    private lateinit var favoriteButton: Button
-
 
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        recyclerView = view.findViewById(R.id.recyclerView)
-
-        val activity = getActivity()
-
         db = FirebaseDatabase.getInstance().getReference("Favorites")
 
-//        favoriteButton = view.findViewById(R.id.FavoriteButton)
-
-
+        recyclerView = view.findViewById(R.id.recyclerView)
         recycleViewAdapter = RecycleViewAdapter(getData())
         recyclerView.layoutManager = GridLayoutManager(activity, 1)
         recyclerView.adapter = recycleViewAdapter
 
-//        favoriteButton.setOnClickListener() {
-//            Toast.makeText(activity, "Added to Favorites", Toast.LENGTH_SHORT).show()
-//        }
-        
 
     }
-
 
     private fun getData(): List<Locations> {
 
@@ -94,7 +81,5 @@ class HomepageFragment: Fragment(R.layout.homepage_fragment) {
         return locations
 
     }
-
-
 }
 

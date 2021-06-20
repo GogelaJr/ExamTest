@@ -3,82 +3,56 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/loginFragment">
-
-    <fragment
-        android:id="@+id/loginFragment"
-        android:name="com.example.examtest.fragments.LoginFragment"
-        android:label="LoginFragment"
-        tools:layout="@layout/login_fragment">
-        <action
-            android:id="@+id/action_loginFragment_to_registerFragment"
-            app:destination="@id/registerFragment" />
-        <action
-            android:id="@+id/action_loginFragment_to_recoveryFragment"
-            app:destination="@id/recoveryFragment" />
-        <action
-            android:id="@+id/action_loginFragment_to_homepageFragment"
-            app:destination="@id/homepageFragment" />
-        <action
-            android:id="@+id/action_loginFragment_to_favouritesFragment"
-            app:destination="@id/favouritesFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/registerFragment"
-        android:name="com.example.examtest.fragments.RegisterFragment"
-        android:label="RegisterFragment"
-        tools:layout="@layout/register_fragment">
-
-        <action
-            android:id="@+id/action_registerFragment_to_loginFragment"
-            app:destination="@id/loginFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/recoveryFragment"
-        android:name="com.example.examtest.fragments.RecoveryFragment"
-        android:label="RecoveryFragment"
-        tools:layout="@layout/recovery_fragment">
-        <action
-            android:id="@+id/action_recoveryFragment_to_loginFragment"
-            app:destination="@id/loginFragment" />
-    </fragment>
+    app:startDestination="@id/homepageFragment">
+<!--    <activity-->
+<!--        android:id="@+id/loginActivity"-->
+<!--        android:name="com.example.examtest.LoginActivity"-->
+<!--        android:label="activity_login"-->
+<!--        tools:layout="@layout/activity_login" />-->
+<!--    <activity-->
+<!--        android:id="@+id/recoveryActivity"-->
+<!--        android:name="com.example.examtest.RecoveryActivity"-->
+<!--        android:label="activity_recovery"-->
+<!--        tools:layout="@layout/activity_recovery" />-->
+<!--    <activity-->
+<!--        android:id="@+id/registerActivity"-->
+<!--        android:name="com.example.examtest.RegisterActivity"-->
+<!--        android:label="activity_register"-->
+<!--        tools:layout="@layout/activity_register" />-->
     <fragment
         android:id="@+id/homepageFragment"
         android:name="com.example.examtest.fragments.HomepageFragment"
-        android:label="HomepageFragment"
-        tools:layout="@layout/homepage_fragment">
+        android:label="News Feed"
+        tools:layout="@layout/homepage_fragment" >
         <action
-            android:id="@+id/action_homepageFragment_to_loginFragment"
-            app:destination="@id/loginFragment" />
+            android:id="@+id/action_homepageFragment_to_uploadFragment"
+            app:destination="@id/uploadFragment" />
         <action
-            android:id="@+id/action_homepageFragment_to_favouritesFragment"
+            android:id="@+id/action_homepageFragment_to_favoritesFragment"
             app:destination="@id/favouritesFragment" />
-        <action
-            android:id="@+id/action_homepageFragment_to_logOutFragment"
-            app:destination="@id/logOutFragment" />
     </fragment>
     <fragment
         android:id="@+id/favouritesFragment"
-        android:name="com.example.examtest.fragments.FavouritesFragment"
-        tools:layout="@layout/favourites_fragment"
-        android:label="FavouritesFragment" >
+        android:name="com.example.examtest.fragments.FavoritesFragment"
+        android:label="Favorites" >
         <action
-            android:id="@+id/action_favouritesFragment_to_homepageFragment"
+            android:id="@+id/action_favoritesFragment_to_homepageFragment"
             app:destination="@id/homepageFragment" />
         <action
-            android:id="@+id/action_favouritesFragment_to_logOutFragment"
-            app:destination="@id/logOutFragment" />
+            android:id="@+id/action_favoritesFragment_to_homepageFragment2"
+            app:destination="@id/homepageFragment" />
     </fragment>
     <fragment
-        android:id="@+id/logOutFragment"
-        android:name="com.example.examtest.fragments.LogOutFragment"
-        android:label="LogOutFragment"
-        tools:layout="@layout/logout_fragment">
+        android:id="@+id/uploadFragment"
+        android:name="com.example.examtest.fragments.UploadFragment"
+        android:label="Upload" >
         <action
-            android:id="@+id/action_logOutFragment_to_favouritesFragment"
-            app:destination="@id/favouritesFragment" />
-        <action
-            android:id="@+id/action_logOutFragment_to_homepageFragment"
+            android:id="@+id/action_uploadFragment_to_homepageFragment"
             app:destination="@id/homepageFragment" />
-    </fragment>/>
+    </fragment>
+    <activity
+        android:id="@+id/changeActivity"
+        android:name="com.example.examtest.ChangeActivity"
+        android:label="activity_change"
+        tools:layout="@layout/activity_change" />
 </navigation>
