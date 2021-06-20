@@ -6,7 +6,7 @@
         android:icon="@drawable/home"
         android:title="News Feed"/>
     <item
-        android:id="@+id/FavoritesIconFragment"
+        android:id="@+id/favoritesIconFragment"
         android:icon="@drawable/favoriteicon"
         android:title="Favorites"/>
     <item

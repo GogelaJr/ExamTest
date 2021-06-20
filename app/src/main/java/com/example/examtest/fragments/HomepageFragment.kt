@@ -1,16 +1,19 @@
 package com.example.examtest.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.examtest.Locations
 import com.example.examtest.R
 import com.example.examtest.RecycleViewAdapter
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 
@@ -20,6 +23,8 @@ class HomepageFragment: Fragment(R.layout.homepage_fragment) {
     private lateinit var recyclerView: RecyclerView
     private lateinit var db: DatabaseReference
     private lateinit var favoriteButton: Button
+
+
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -41,9 +46,10 @@ class HomepageFragment: Fragment(R.layout.homepage_fragment) {
 //        favoriteButton.setOnClickListener() {
 //            Toast.makeText(activity, "Added to Favorites", Toast.LENGTH_SHORT).show()
 //        }
-
+        
 
     }
+
 
     private fun getData(): List<Locations> {
 
@@ -88,5 +94,7 @@ class HomepageFragment: Fragment(R.layout.homepage_fragment) {
         return locations
 
     }
+
+
 }
 

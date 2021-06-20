@@ -19,6 +19,9 @@
         <action
             android:id="@+id/action_loginFragment_to_homepageFragment"
             app:destination="@id/homepageFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_favouritesFragment"
+            app:destination="@id/favouritesFragment" />
     </fragment>
     <fragment
         android:id="@+id/registerFragment"
@@ -47,5 +50,35 @@
         <action
             android:id="@+id/action_homepageFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_homepageFragment_to_favouritesFragment"
+            app:destination="@id/favouritesFragment" />
+        <action
+            android:id="@+id/action_homepageFragment_to_logOutFragment"
+            app:destination="@id/logOutFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/favouritesFragment"
+        android:name="com.example.examtest.fragments.FavouritesFragment"
+        tools:layout="@layout/favourites_fragment"
+        android:label="FavouritesFragment" >
+        <action
+            android:id="@+id/action_favouritesFragment_to_homepageFragment"
+            app:destination="@id/homepageFragment" />
+        <action
+            android:id="@+id/action_favouritesFragment_to_logOutFragment"
+            app:destination="@id/logOutFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/logOutFragment"
+        android:name="com.example.examtest.fragments.LogOutFragment"
+        android:label="LogOutFragment"
+        tools:layout="@layout/logout_fragment">
+        <action
+            android:id="@+id/action_logOutFragment_to_favouritesFragment"
+            app:destination="@id/favouritesFragment" />
+        <action
+            android:id="@+id/action_logOutFragment_to_homepageFragment"
+            app:destination="@id/homepageFragment" />
     </fragment>/>
 </navigation>
