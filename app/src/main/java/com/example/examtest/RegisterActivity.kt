@@ -8,6 +8,7 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.navigation.NavController
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.*
 
 class RegisterActivity : AppCompatActivity() {
 
@@ -17,7 +18,7 @@ class RegisterActivity : AppCompatActivity() {
     private lateinit var registerfinish: Button
     private lateinit var backButton: Button
     private lateinit var mAuth: FirebaseAuth
-    private lateinit var navController: NavController
+    private lateinit var db: DatabaseReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,6 +30,7 @@ class RegisterActivity : AppCompatActivity() {
         registerfinish = findViewById(R.id.EndRegisterButton)
         backButton = findViewById(R.id.registerBack)
         mAuth = FirebaseAuth.getInstance()
+        db = FirebaseDatabase.getInstance().getReference("UserInfo")
 
 
         registerfinish.setOnClickListener(){
@@ -53,6 +55,17 @@ class RegisterActivity : AppCompatActivity() {
                 .addOnCompleteListener { task ->
                     if(task.isSuccessful){
                         Toast.makeText(this, "Account Created!", Toast.LENGTH_SHORT).show()
+                        info(email)
+                        db.child(mAuth?.currentUser?.uid!!).addValueEventListener(object: ValueEventListener{
+                        override fun onDataChange(snapshot: DataSnapshot){
+                            val userInfo: UserInfo = snapshot.getValue(UserInfo::class.java) ?: return
+
+                        }
+                            override fun onCancelled(error: DatabaseError){
+
+                            }
+
+                        })
                         gotoLogin()
                     }else{
                         Toast.makeText(this, "Error occured! Please Try Again later", Toast.LENGTH_SHORT).show()
@@ -67,6 +80,13 @@ class RegisterActivity : AppCompatActivity() {
         }
 
     }
+
+    private fun info(email: String) {
+        val userInfo = UserInfo(email)
+        db.child(mAuth.currentUser?.uid!!).setValue(userInfo)
+
+    }
+
     private fun gotoLogin(){
         startActivity(Intent(this, LoginActivity::class.java))
         finish()

@@ -62,6 +62,11 @@ class UploadActivity : AppCompatActivity() {
         ref.putFile(selectedPhotoUri!!)
             .addOnSuccessListener {
                 Log.d("Upload","Successfully uploaded image: ${it.metadata?.path}")
+                ref.downloadUrl.addOnCompleteListener {
+                    it.toString()
+                    Log.d("Upload","File Location  $it")
+                    Toast.makeText(this,"Image Uploaded Successfuly", Toast.LENGTH_SHORT).show()
+                }
             }
     }
 
