@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item
-        android:id="@+id/homeIconFragment"
-        android:icon="@drawable/home"
-        android:title="News Feed"/>
-    <item
-        android:id="@+id/favoritesIconFragment"
-        android:icon="@drawable/favoriteicon"
-        android:title="Favorites"/>
-    <item
-        android:id="@+id/logoutIconFragment"
-        android:icon="@drawable/logouticon"
-        android:title="Logout"/>
+<item
+    android:id="@+id/homepageFragment"
+    android:icon="@drawable/home"
+    android:title="News Feed"/>
+<item
+    android:id="@+id/favouritesFragment"
+    android:icon="@drawable/favoriteicon"
+    android:title="Favorites"/>
+<item
+    android:id="@+id/logOutFragment"
+    android:icon="@drawable/logouticon"
+    android:title="Logout"/>
 
 
 
