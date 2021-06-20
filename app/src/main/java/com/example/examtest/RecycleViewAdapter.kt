@@ -21,7 +21,7 @@ class RecycleViewAdapter(private val locationList: List<Locations>):
             informationTextView.text = location.information
 
             Glide.with(itemView)
-                .load(location.url)
+                .load(location.image)
                 .centerCrop()
                 .placeholder(R.drawable.ic_launcher_foreground)
                 .into(imageView)

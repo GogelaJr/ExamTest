@@ -28,10 +28,10 @@ class LoginActivity : AppCompatActivity() {
         editPasswordText = findViewById(R.id.LoginPassword)
 
         mAuth = FirebaseAuth.getInstance()
-//        if(mAuth.currentUser != null){
-//            gotoLogin()
-//
-//        }
+        if(mAuth.currentUser != null){
+            goToMain()
+
+        }
 
         this.clicks()
     }

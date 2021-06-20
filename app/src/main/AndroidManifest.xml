@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ExamTest">
-        <activity android:name=".ChangeActivity"></activity>
+        <activity android:name=".UploadActivity"></activity>
+        <activity android:name=".ChangeActivity" />
         <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,7 +22,7 @@
         </activity>
         <activity android:name=".RegisterActivity" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".RecoveryActivity"></activity>
+        <activity android:name=".RecoveryActivity" />
     </application>
 
 </manifest>
