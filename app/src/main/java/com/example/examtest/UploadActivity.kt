@@ -74,22 +74,6 @@ class UploadActivity : AppCompatActivity() {
             }
     }
 
-    private fun addUploadRecordToDb(uri: String) {
-        val db = FirebaseFirestore.getInstance()
-
-        val data = HashMap<String, Any>()
-        data["imageUrl"] = uri
-
-        db.collection("posts")
-            .add(data)
-            .addOnSuccessListener { documentReference ->
-                Toast.makeText(this, "Saved to DB", Toast.LENGTH_LONG).show()
-            }
-            .addOnFailureListener { e ->
-                Toast.makeText(this, "Error saving to DB", Toast.LENGTH_LONG).show()
-            }
-    }
-
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == 0 && resultCode == Activity.RESULT_OK && data != null) {
