@@ -1,6 +1,7 @@
 package com.example.examtest
 
 import android.app.Activity
+import android.content.ContentValues.TAG
 import android.content.Intent
 import android.graphics.drawable.BitmapDrawable
 import android.net.Uri
@@ -18,6 +19,8 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.UploadTask
+import com.squareup.picasso.Callback
+import com.squareup.picasso.Picasso
 import java.io.IOException
 import java.util.*
 
@@ -94,6 +97,6 @@ class UploadActivity : AppCompatActivity() {
         selectedPhotoUri = data?.data
         val bitmap = MediaStore.Images.Media.getBitmap(contentResolver, selectedPhotoUri)
         val bitmapDrawable = BitmapDrawable(bitmap)
-
-        }
+        Picasso.get().load(selectedPhotoUri).into(imageView)
     }
+}
