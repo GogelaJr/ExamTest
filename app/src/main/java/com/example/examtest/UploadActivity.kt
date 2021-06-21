@@ -69,6 +69,7 @@ class UploadActivity : AppCompatActivity() {
                     it.toString()
                     Log.d("Upload","File Location  $it")
                     Toast.makeText(this,"Image Uploaded Successfuly", Toast.LENGTH_SHORT).show()
+
                 }
             }
     }
