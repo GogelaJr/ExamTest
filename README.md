@@ -1,13 +1,10 @@
-აპლიკაცია ტურისტებისთვის
-
-მოკლე აღწერა
+Application for tourists
 
 
-აპლიკაციაში მომხარებელს შეუძლია ატვირთოს სასურველი ფოტო ლოკაციის და დაურთოს სათაური და მოკლე აღწერა რომელიც გამოჩნდება მთავარ გვერდზე, ასევე შეუძლია სასურველი ფოტო შეინახოს ფავორიტებში და ცალკე გვერდზე დაათვალიეროს მომავალში
+Info:
 
+Application is for tourists, users can upload their own pictures of interesting locations, see pictures of other users on the News feed and add them to their Favorite list
 
-ინსტრუქცია
+Instruction:
 
-ვხსნით აპლიკაციას, თუ დარეგისტრირებული არ ვართ, ვაწვებით რეგისტრაციას და ვრეგისტრირდებით, შეგვყავს სასურველი ელექტრონული მეილი, პაროლი და ვიმეორებთ პაროლს, შემდეგ ვაწვებით რეგისტრაციას. შევდივართ ჩვენს შექმნილ ექაუნთზე და პირველ გვერდზე დავინახავთ მთავარ გვერდს "News Feed" ქვემოთ მოცემული ნავიგაციით შეგვიძლია გადავიდეთ ფავორიტების ან/და ხელსაწყოების გვერდზე. ხელსაწყოების გვერდზე შეგვიძლია ავტვირთოთ სასურველი ფოტო, შევცვალოთ მიმდინარე პაროლი ან და გამოვიდეთ ექაუნთიდან.
-ფოტოს ატვირთვის შემთხვევაში ვაწვებით Uploadს ვირჩევთ სასურველ სურათს ღილაკი Choose Image-ით, ვწერთ სასურველ სათაურს და მოკლე აღწერას ლოკაციისას, ვაწვებით Upload Image, და ჩვენი ატვირთული სურათი გამოჩნდება News Feed გვერდზე.
-
+After opening the application we are prompted to input our credentials like Email or password, if you are not registered on the platform use the Register button and enter your credentials. After completing your registration enter your used credentials in the login menu, after logging in we are greeted by the News feed, on the bottom navigation bar we can either open our favorites list or settings. In the settings tab we can upload a picture, change our password or logout. If you want to upload a picture simply click on the Upload button and we will be greeted by the Upload page, we click the Choose image button and choose our mage from our local device, after that we enter our desired information like Location and Description and press Uploda image. the image will be displayed on the News feed. Than we can go back to the news feed and click on the tiny button next to an image to add it to our favorites list. afterwards we can go to the Favorites tab and we will see our Favorited pictures.
