@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RecoveryActivity">
+    tools:context=".RecoveryActivity"
+    android:background="#AF9C9C">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
