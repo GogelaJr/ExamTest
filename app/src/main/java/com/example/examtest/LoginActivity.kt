@@ -51,6 +51,7 @@ class LoginActivity : AppCompatActivity() {
                         goToMain()
                     }else{
                         Toast.makeText(this, "Email or Password is invalid", Toast.LENGTH_SHORT).show()
+                        gotoLogin()
 
                     }
                 }

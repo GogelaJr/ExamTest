@@ -1,6 +1,7 @@
 package com.example.examtest.fragments
 
 import android.content.Intent
+import android.graphics.Color
 import android.graphics.Picture
 import android.net.Uri
 import android.os.Bundle
@@ -47,7 +48,6 @@ class UploadFragment:Fragment(R.layout.upload_fragment) {
         upload = view.findViewById(R.id.uploadButton)
         change = view.findViewById(R.id.resetPassword)
         logout = view.findViewById(R.id.logoutButton)
-
         this.listeners()
     }
     private fun listeners(){
