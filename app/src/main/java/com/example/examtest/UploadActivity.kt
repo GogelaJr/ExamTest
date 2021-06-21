@@ -15,6 +15,8 @@ import android.widget.ImageView
 import android.widget.Toast
 import com.google.android.gms.tasks.Continuation
 import com.google.android.gms.tasks.Task
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.*
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
@@ -31,13 +33,15 @@ class UploadActivity : AppCompatActivity() {
     private lateinit var descriptionEditText: EditText
     private lateinit var chooseButton: Button
     private lateinit var uploadButton: Button
-
-    //    private val PICK_IMAGE_REQUEST = 71
-
+    private lateinit var db: DatabaseReference
+    private lateinit var mAuth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_upload)
+
+        db = FirebaseDatabase.getInstance().getReference("LocationInfo")
+        mAuth = FirebaseAuth.getInstance()
 
         imageView = findViewById(R.id.image_preview)
         locationEditText = findViewById(R.id.uploadName)
@@ -45,8 +49,17 @@ class UploadActivity : AppCompatActivity() {
         chooseButton = findViewById(R.id.uploadChoose)
         uploadButton = findViewById(R.id.uploadUpload)
 
-        chooseButton.setOnClickListener() { openFileChooser() }
-        uploadButton.setOnClickListener() { uploadImage() }
+        chooseButton.setOnClickListener() { openFileChooser()
+        uploadImage()}
+        uploadButton.setOnClickListener() {
+            uploadInfo()
+        }
+
+    }
+
+    private fun Imageinfo(locationname: String, description:  String) {
+        val image = ImageInfo(locationname, description)
+        db.child(mAuth.currentUser?.uid!!).setValue(image)
 
     }
 
@@ -61,7 +74,7 @@ class UploadActivity : AppCompatActivity() {
     private fun uploadImage() {
         if(selectedPhotoUri ==null) return
         val filename = UUID.randomUUID().toString()
-        val ref = FirebaseStorage.getInstance().getReference("/uploads/$filename")
+        val ref = FirebaseStorage.getInstance().getReference("uploads/$filename")
         ref.putFile(selectedPhotoUri!!)
             .addOnSuccessListener {
                 Log.d("Upload","Successfully uploaded image: ${it.metadata?.path}")
@@ -74,6 +87,7 @@ class UploadActivity : AppCompatActivity() {
             }
     }
 
+
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == 0 && resultCode == Activity.RESULT_OK && data != null) {
@@ -83,5 +97,24 @@ class UploadActivity : AppCompatActivity() {
         val bitmap = MediaStore.Images.Media.getBitmap(contentResolver, selectedPhotoUri)
         val bitmapDrawable = BitmapDrawable(bitmap)
         Picasso.get().load(selectedPhotoUri).into(imageView)
+    }
+    private fun uploadInfo(){
+        val locationname = locationEditText.text.toString()
+        val description = descriptionEditText.text.toString()
+        Imageinfo(locationname, description)
+        db.child(mAuth?.currentUser?.email!!).addValueEventListener(object: ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot){
+                val imageInfo: ImageInfo = snapshot.getValue(ImageInfo::class.java) ?: return
+
+
+            }
+            override fun onCancelled(error: DatabaseError){
+
+            }
+
+        })
+        // collections.max()
+
+
     }
 }

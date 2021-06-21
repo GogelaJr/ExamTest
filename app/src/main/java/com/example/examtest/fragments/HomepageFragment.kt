@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.examtest.Locations
 import com.example.examtest.R
 import com.example.examtest.RecycleViewAdapter
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 
@@ -18,6 +19,8 @@ class HomepageFragment: Fragment(R.layout.homepage_fragment) {
     private lateinit var recyclerView: RecyclerView
     private lateinit var db: DatabaseReference
     private lateinit var favoriteButton: Button
+    private lateinit var favref: DatabaseReference
+    private lateinit var mAuth: FirebaseAuth
 
 
 
@@ -30,6 +33,8 @@ class HomepageFragment: Fragment(R.layout.homepage_fragment) {
         val activity = getActivity()
 
         db = FirebaseDatabase.getInstance().getReference("Favorites")
+
+        mAuth = FirebaseAuth.getInstance()
 
         recycleViewAdapter = RecycleViewAdapter(getData())
         recyclerView.layoutManager = GridLayoutManager(activity, 1)

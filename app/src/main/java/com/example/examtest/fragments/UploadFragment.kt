@@ -44,9 +44,6 @@ class UploadFragment:Fragment(R.layout.upload_fragment) {
         Picturebase = FirebaseDatabase.getInstance().getReference("Images")
 
 //        imageView = view.findViewById(R.id.imageView)
-        picturename = view.findViewById(R.id.pictureName)
-        description = view.findViewById(R.id.description)
-        choose = view.findViewById(R.id.chooseImage)
         upload = view.findViewById(R.id.uploadButton)
         change = view.findViewById(R.id.resetPassword)
         logout = view.findViewById(R.id.logoutButton)
